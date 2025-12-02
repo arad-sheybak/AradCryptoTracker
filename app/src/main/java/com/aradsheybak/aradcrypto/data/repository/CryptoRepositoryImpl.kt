@@ -12,8 +12,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlin.collections.emptyList
 
 class CryptoRepositoryImpl(
     private val webSocketService: WebSocketService,
@@ -25,7 +27,12 @@ class CryptoRepositoryImpl(
     override fun getRealTimeCurrencies(): Flow<List<Currency>> {
         return webSocketService.getCurrencyStream()
             .map { dtos ->
+                Log.d("REPOSITORY", "📨 Received ${dtos.size} DTOs")
                 currencyMapper.dtoListToEntityList(dtos)
+            }
+            .onStart {
+                Log.d("REPOSITORY", "🚀 Starting currency stream")
+                emit(emptyList())
             }
             .stateIn(
                 scope = CoroutineScope(Dispatchers.Default),
@@ -33,13 +40,13 @@ class CryptoRepositoryImpl(
                 initialValue = emptyList()
             )
     }
+
     override fun connect() {
         Log.d("REPOSITORY", "🔗 Connecting...")
         webSocketService.connect()
 
-        // تأخیر بده بعد subscribe کن
         CoroutineScope(Dispatchers.IO).launch {
-            delay(2000) // ۲ ثانیه صبر کن
+            delay(2000)
             Log.d("REPOSITORY", "📡 Subscribing to currencies...")
             webSocketService.subscribeToCurrencies(listOf("BTCUSDT", "ETHUSDT", "ADAUSDT"))
         }

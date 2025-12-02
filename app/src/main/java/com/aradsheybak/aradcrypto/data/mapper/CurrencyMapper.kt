@@ -4,9 +4,9 @@ import com.aradsheybak.aradcrypto.core.domain.entity.Currency
 import com.aradsheybak.aradcrypto.data.remote.dto.response.CurrencyDto
 
 class CurrencyMapper {
-    fun dtoToEntity(dto: CurrencyDto): Currency {
+    fun dtoToEntity(symbol: String,dto: CurrencyDto): Currency {
         return Currency(
-            symbol = dto.symbol,
+            symbol = symbol,
             last = dto.last,
             open = dto.open,
             close = dto.close,
@@ -20,7 +20,10 @@ class CurrencyMapper {
         )
     }
 
-    fun dtoListToEntityList(dtos: List<CurrencyDto>): List<Currency> {
-        return dtos.map { dtoToEntity(it) }
+
+    fun dtoListToEntityList(symbolDtoMap: Map<String, CurrencyDto>): List<Currency> {
+        return symbolDtoMap.map { (symbol, dto) ->
+            dtoToEntity(symbol, dto)
+        }
     }
 }

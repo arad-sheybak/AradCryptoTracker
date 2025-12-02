@@ -1,6 +1,7 @@
 package com.aradsheybak.aradcrypto.data.remote.websocket
 
 import android.util.Log
+import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -17,7 +18,11 @@ class CoinExWebSocketClient(
     private val okHttpClient: OkHttpClient
 ) {
     private var webSocket: WebSocket? = null
-    private val _messages = MutableSharedFlow<String>()
+    private val _messages = MutableSharedFlow<String>(
+        replay = 0,
+        extraBufferCapacity = 64,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST
+    )
     val messages: SharedFlow<String> = _messages.asSharedFlow()
 
     private val _connectionState = MutableStateFlow<WebSocketState>(WebSocketState.Disconnected)

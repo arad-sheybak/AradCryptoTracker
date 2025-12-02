@@ -5,7 +5,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class CurrencyDto(
-    val symbol: String,
     @field:Json(name = "last") val last: String,
     @field:Json(name = "open") val open: String,
     @field:Json(name = "close") val close: String,
