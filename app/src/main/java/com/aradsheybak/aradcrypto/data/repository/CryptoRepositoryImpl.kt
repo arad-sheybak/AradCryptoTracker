@@ -22,7 +22,6 @@ class CryptoRepositoryImpl(
     private val currencyMapper: CurrencyMapper
 ) : CryptoRepository {
 
-    private val _currencies = MutableStateFlow<List<Currency>>(emptyList())
 
     override fun getRealTimeCurrencies(): Flow<List<Currency>> {
         return webSocketService.getCurrencyStream()

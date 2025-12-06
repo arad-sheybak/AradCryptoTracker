@@ -14,9 +14,7 @@ import okhttp3.Response
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
 
-class CoinExWebSocketClient(
-    private val okHttpClient: OkHttpClient
-) {
+class CoinExWebSocketClient(private val okHttpClient: OkHttpClient) {
     private var webSocket: WebSocket? = null
     private val _messages = MutableSharedFlow<String>(
         replay = 0,
@@ -26,6 +24,7 @@ class CoinExWebSocketClient(
     val messages: SharedFlow<String> = _messages.asSharedFlow()
 
     private val _connectionState = MutableStateFlow<WebSocketState>(WebSocketState.Disconnected)
+
     val connectionState: StateFlow<WebSocketState> = _connectionState.asStateFlow()
 
     fun connect(url: String = "wss://socket.coinex.com/") {
@@ -36,6 +35,7 @@ class CoinExWebSocketClient(
             .build()
 
         webSocket = okHttpClient.newWebSocket(request, object : WebSocketListener() {
+
             override fun onOpen(webSocket: WebSocket, response: Response) {
                 _connectionState.value = WebSocketState.Connected
             }
@@ -56,6 +56,7 @@ class CoinExWebSocketClient(
             override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
                 _connectionState.value = WebSocketState.Disconnecting
             }
+
         })
     }
 

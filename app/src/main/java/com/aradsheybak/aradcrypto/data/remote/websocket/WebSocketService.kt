@@ -61,7 +61,3 @@ class WebSocketService(
         return webSocketClient.connectionState
     }
 }
-data class CurrencyWithSymbol(
-    val symbol: String,
-    val data: CurrencyDto
-)

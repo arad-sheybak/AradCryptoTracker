@@ -17,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.aradsheybak.aradcrypto.presentation.main.MainContract
+import com.aradsheybak.aradcrypto.R
 
 
 @Composable
@@ -28,7 +29,7 @@ fun CurrencyItem(
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp),
+            .padding(horizontal = 8.dp),
         shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         onClick = onClick,
@@ -100,14 +101,14 @@ fun CurrencyItem(
                 ) {
                     if (currency.isPositive) {
                         Icon(
-                            painter = painterResource(id = androidx.core.R.drawable.ic_call_answer),
+                            painter = painterResource(id = R.drawable.ic_price_up),
                             contentDescription = "Up",
                             tint = Color(0xFF4CAF50),
                             modifier = Modifier.size(20.dp)
                         )
                     } else {
                         Icon(
-                            painter = painterResource(id = androidx.core.R.drawable.ic_call_decline),
+                            painter = painterResource(id = R.drawable.ic_price_down),
                             contentDescription = "Down",
                             tint = Color(0xFFF44336),
                             modifier = Modifier.size(20.dp)

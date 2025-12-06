@@ -20,7 +20,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.aradsheybak.aradcrypto.presentation.components.CurrencyItem
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.compose.koinViewModel
-
+import com.aradsheybak.aradcrypto.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
@@ -55,7 +55,7 @@ fun MainScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "Crypto Tracker",
+                        text = "Arad Crypto Tracker",
                         fontWeight = FontWeight.Bold
                     )
                 },
@@ -68,31 +68,18 @@ fun MainScreen(
                         onClick = { viewModel.processIntent(MainContract.Intent.Refresh) }
                     ) {
                         Icon(
-                            painter = painterResource(androidx.core.R.drawable.ic_call_answer),
+                            painter = painterResource(R.drawable.ic_refresh),
                             contentDescription = "Refresh"
                         )
                     }
                 }
             )
         },
-        floatingActionButton = {
-            if (!state.isConnected) {
-                ExtendedFloatingActionButton(
-                    onClick = { viewModel.processIntent(MainContract.Intent.RetryConnection) },
-                    icon = {
-                        Icon(
-                            painter = painterResource(androidx.core.R.drawable.ic_call_answer),
-                            contentDescription = "Retry"
-                        )
-                    },
-                    text = { Text("Reconnect") }
-                )
-            }
-        }
     ) { paddingValues ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
+                .background(color = Color.White)
                 .padding(paddingValues)
         ) {
             when {
