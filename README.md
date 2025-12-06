@@ -10,7 +10,7 @@ A modern Android application for tracking cryptocurrency prices in **real-time**
 
 ## 🎥 Demo
 
-![App Demo](https://via.placeholder.com/400x800/0088cc/ffffff?text=Demo+GIF+Here)  
+![App Demo](./demo/screen_record.gif)  
 *Real-time price updates with smooth UI transitions*
 
 ## ✨ Features
