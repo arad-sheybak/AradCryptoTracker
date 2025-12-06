@@ -27,19 +27,19 @@ A modern Android application for tracking cryptocurrency prices in **real-time**
 ## 🏗️ Architecture
 
 📱 Presentation Layer (UI)
-  ├── Jetpack Compose
-  ├── MVI Pattern (State + Intent)
-  └── Material 3 Design
+    ├── Jetpack Compose
+    ├── MVI Pattern (State + Intent)
+    └── Material 3 Design
 
 🔧 Domain Layer (Business Logic)
-  ├── Use Cases
-  ├── Repository Interfaces
-  └── Entities
+    ├── Use Cases
+    ├── Repository Interfaces
+    └── Entities
 
 🗄️ Data Layer (Data Sources)
-  ├── WebSocket Client (CoinEx API)
-  ├── Repository Implementation
-  └── DTOs with Moshi
+    ├── WebSocket Client (CoinEx API)
+    ├── Repository Implementation
+    └── DTOs with Moshi
 
 
 ## 🛠️ Tech Stack
