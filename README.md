@@ -97,6 +97,8 @@ Java 17
 The app uses CoinEx WebSocket API by default. No API key is required for public price data.
 
 ## 🔧 Key Implementation Details
+
+
 ## WebSocket Client (CoinExWebSocketClient.kt)
 🏗️ Manages WebSocket connection lifecycle
 
