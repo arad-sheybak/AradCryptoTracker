@@ -85,14 +85,13 @@ Java 17
 
 ## Installation
 
-1.Clone the repository:
+    1.Clone the repository:
 
-git clone https://github.com/arad-sheybak/AradCryptoTracker.git
+    git clone https://github.com/arad-sheybak/AradCryptoTracker.git
 
+    2.Open the project in Android Studio
 
-2.Open the project in Android Studio
-
-3.Build and run the app on an emulator or physical device
+    3.Build and run the app on an emulator or physical device
 
 ## Configuration
 The app uses CoinEx WebSocket API by default. No API key is required for public price data.
