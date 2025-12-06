@@ -53,18 +53,14 @@ fun CurrencyItem(
                 // Icon placeholder
                 Box(
                     modifier = Modifier
-                        .size(48.dp)
-                        .background(
-                            color = MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
-                            shape = RoundedCornerShape(12.dp)
-                        ),
+                        .size(48.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(
-                        text = currency.symbol.take(3),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.primary
+                    Icon(
+                        painter = painterResource(id = currency.iconRes),
+                        contentDescription = currency.name,
+                        modifier = Modifier.size(48.dp),
+                        tint = Color.Unspecified
                     )
                 }
 

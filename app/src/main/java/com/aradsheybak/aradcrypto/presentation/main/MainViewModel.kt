@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.*
 import java.text.SimpleDateFormat
 import java.util.*
+import com.aradsheybak.aradcrypto.R
 
 class MainViewModel(
     private val getRealTimeCurrenciesUseCase: GetRealTimeCurrenciesUseCase,
@@ -128,9 +129,9 @@ class MainViewModel(
 
     private fun getCurrencyIcon(symbol: String): Int {
         return when {
-            symbol.contains("BTC") -> android.R.drawable.star_big_on
-            symbol.contains("ETH") -> android.R.drawable.star_big_on
-            symbol.contains("ADA") -> android.R.drawable.star_big_on
+            symbol.contains("BTC") -> R.drawable.ic_btc
+            symbol.contains("ETH") -> R.drawable.ic_eth
+            symbol.contains("ADA") -> R.drawable.ic_ada
             else -> android.R.drawable.star_big_on
         }
     }
